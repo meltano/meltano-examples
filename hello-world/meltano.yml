@@ -1,0 +1,18 @@
+version: 1
+default_environment: dev
+send_anonymous_usage_stats: false
+project_id: 96b6f695-b3e7-4189-90a4-c74bde4696d6
+environments:
+- name: dev
+plugins:
+  utilities:
+  - name: hello-world
+    namespace: hello_world
+    executable: python3
+    commands:
+      say-hello:
+        args: -c "print('hello world')"
+        description: Prints hello world to stdout
+jobs:
+- name: example-say-hello
+  tasks: hello-world:say-hello
