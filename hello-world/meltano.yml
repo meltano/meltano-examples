@@ -11,7 +11,7 @@ plugins:
     executable: python3
     commands:
       say-hello:
-        args: -c "print('hello world')"
+        args: -c "print('Hello World!')"
         description: Prints hello world to stdout
 jobs:
 - name: example-say-hello
