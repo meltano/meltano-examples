@@ -1,0 +1,36 @@
+version: 1
+default_environment: dev
+send_anonymous_usage_stats: false
+project_id: b2f1a3c4-d5e6-4f78-9012-cdef34567890
+environments:
+- name: dev
+plugins:
+  extractors:
+  - name: tap-csv
+    variant: meltanolabs
+    config:
+      # Each entry in `files` maps one CSV file to a named Singer stream.
+      # `entity` becomes the stream name; `keys` defines the primary key(s).
+      files:
+      - entity: employees
+        path: data/employees.csv
+        keys:
+        - id
+  loaders:
+  - name: target-jsonl
+    variant: andyh1203
+    config:
+      # JSONL files are written to output/<stream>.jsonl
+      destination_path: output
+  utilities:
+  - name: show-output
+    namespace: show_output
+    # Uses the system `sh` binary — no pip install needed.
+    executable: sh
+    commands:
+      print-jsonl:
+        args: -c "cat output/*.jsonl"
+        description: Prints all JSONL output files to stdout
+jobs:
+- name: csv-to-jsonl
+  tasks: tap-csv target-jsonl show-output:print-jsonl

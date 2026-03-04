@@ -9,6 +9,7 @@ Each example is a self-contained Meltano project you can clone and run locally.
 | Example | Category | What it demonstrates |
 |---------|----------|----------------------|
 | [hello-world](./hello-world/) | Utilities | Inline custom plugin with no hub lookup or pip install |
+| [csv-to-jsonl](./csv-to-jsonl/) | ELT Pipelines | Extract from CSV, load to JSONL, display output with an inline utility plugin |
 
 ## Getting started
 
