@@ -33,4 +33,5 @@ plugins:
         description: Prints all JSONL output files to stdout
 jobs:
 - name: csv-to-jsonl
-  tasks: tap-csv target-jsonl show-output:print-jsonl
+  tasks: 
+  - tap-csv target-jsonl show-output:print-jsonl
